@@ -1,8 +1,6 @@
 const createMongoClient = require('../shared/mongo');
 const renderizador = require('../services/resizer');
 const multipart = require("parse-multipart");
-const Path = require("path");
-const fs = require('fs');
 const { v4: uuidv4 } = require('uuid');
 var sizeOf = require('buffer-image-size');
 
@@ -76,15 +74,15 @@ module.exports = async function (context, req) {
             })
             var resultResize800= await renderizador(uuid800, parts[0].data, null, 800, null)
             
-            Tasks.updateOne({"_id":uuid800},{$set:{ status:"finished",
+            await Tasks.updateOne({"_id":uuid800},{$set:{ status:"finished",
                                                     lastUpdate: new Date().toISOString(),
                                                     md5: resultResize800.md5
                                                 }
                                             })
-                                            
+
             var resultResize1024= await renderizador(uuid1024, parts[0].data, null, 1024, null)
 
-            Tasks.updateOne({"_id":uuid1024},{$set:{ status:"finished",
+            await Tasks.updateOne({"_id":uuid1024},{$set:{ status:"finished",
                                                     lastUpdate: new Date().toISOString(),
                                                     md5: resultResize1024.md5
                                                 }
