@@ -1,8 +1,8 @@
 const { MongoClient } = require("mongodb");
 
 const config = {
-  url: "mongodb://localhost:27017/prueba-node",
-  dbName: "prueba-node"
+  url: "mongodb://localhost:27017/prueba-node-MarioGonzalez",
+  dbName: "prueba-node-MarioGonzalez"
 };
 
 async function createConnection() {
