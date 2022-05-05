@@ -29,7 +29,7 @@ module.exports = async function (context, req) {
             status: 200,
             body: body,
             headers: {
-                "Content-Disposition": `attachment; filename=result.jpg`
+                "Content-Disposition": `attachment; filename=${imageFound.name}`
             }
           }
       }else{
