@@ -72,19 +72,21 @@ module.exports = async function (context, req) {
                 lastUpdate: new Date().toISOString(),
                 md5:        null
             })
-            var resultResize800= await renderizador(uuid800, parts[0].data, null, 800, null)
+            var resultResize800= await renderizador(uuid800, parts[0].data, 800)
             
-            await Tasks.updateOne({"_id":uuid800},{$set:{ status:"finished",
-                                                    lastUpdate: new Date().toISOString(),
-                                                    md5: resultResize800.md5
+            await Tasks.updateOne({"_id":uuid800},{$set:{ status:       "finished",
+                                                            nombre:     resultResize800.md5 + ".jpg",
+                                                            lastUpdate: new Date().toISOString(),
+                                                            md5:        resultResize800.md5
                                                 }
                                             })
 
-            var resultResize1024= await renderizador(uuid1024, parts[0].data, null, 1024, null)
+            var resultResize1024= await renderizador(uuid1024, parts[0].data, 1024)
 
-            await Tasks.updateOne({"_id":uuid1024},{$set:{ status:"finished",
-                                                    lastUpdate: new Date().toISOString(),
-                                                    md5: resultResize1024.md5
+            await Tasks.updateOne({"_id":uuid1024},{$set:{  status:     "finished",
+                                                            nombre:     resultResize1024.md5 + ".jpg",
+                                                            lastUpdate: new Date().toISOString(),
+                                                            md5:        resultResize1024.md5
                                                 }
                                             })
 

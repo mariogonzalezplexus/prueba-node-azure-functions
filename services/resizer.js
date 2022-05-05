@@ -3,7 +3,7 @@ const sharp = require('sharp')
 var sizeOf = require('buffer-image-size')
 var md5 = require("md5")
 
-async function renderizador(uuid, fileBuffer, fileName, size, nombreSinExtension) {
+async function renderizador(uuid, fileBuffer, size) {
     
     // redimensionado imagen
     fileresult= await sharp (fileBuffer)
