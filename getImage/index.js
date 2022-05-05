@@ -35,7 +35,6 @@ module.exports = async function (context, req) {
       }else{
         context.res = {
             status: 204,
-            body
           }
       }
 
