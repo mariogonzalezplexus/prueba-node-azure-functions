@@ -13,10 +13,11 @@ async function renderizador(uuid, fileBuffer, fileName, size, nombreSinExtension
     // calcular MD5 fichero resultante
     const hash= await md5(fileresult)
 
-    // // renombrar fichero con el MD5 
+    // // renombrar fichero con el MD5, en este caso no merece la pena renombrar ya que se trabajara con Buffers 
+    // // para no tener que guardar ficheros en las funciones de azure, por lo tanto se guardara el binario directamente en la BD
+
     // const oldPath = path.join(__dirname, "output/",nombreSinExtension+"/"+size+"/"+fileName)  
     // const newPath = path.join(__dirname, "output",nombreSinExtension,size.toString(),hash + ".jpg")
-    
     // fs.renameSync(oldPath, newPath) 
     
     var file= {path: null, name: hash + ".jpg", md5: hash, fileresult:fileresult};
@@ -26,7 +27,6 @@ async function renderizador(uuid, fileBuffer, fileName, size, nombreSinExtension
     const { db, connection } = await createMongoClient()
     
     const Images = db.collection('images')
-    const Tasks = db.collection('tasks')
     var dimensions = sizeOf(fileresult);
     
     var imagen={
@@ -40,7 +40,7 @@ async function renderizador(uuid, fileBuffer, fileName, size, nombreSinExtension
         height:     dimensions.height
     }
 
-    const imageUploaded = await Images.insert(imagen)
+    await Images.insert(imagen)
     connection.close()
 
     return {md5: hash }
