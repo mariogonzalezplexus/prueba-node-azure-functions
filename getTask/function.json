@@ -5,9 +5,8 @@
       "type": "httpTrigger",
       "direction": "in",
       "name": "req",
-      "methods": ["post"],
-      "route": "task",
-      "dataType": "binary"
+      "methods": ["get"],
+      "route": "task/{id}"
     },
     {
       "type": "http",

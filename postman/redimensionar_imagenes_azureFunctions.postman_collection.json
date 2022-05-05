@@ -1,0 +1,91 @@
+{
+	"info": {
+		"_postman_id": "7bf554f9-70a5-4cf3-b4b2-c2b80da06139",
+		"name": "Azure redimensionar imagenes",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "task image",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "file_upload",
+							"type": "file",
+							"src": "/C:/Users/mario.gonzalezsanche/Pictures/testimages_screenshot2.jpg"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:7071/api/task",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "7071",
+					"path": [
+						"api",
+						"task"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "details task",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:7071/api/task/:taskid",
+					"host": [
+						"localhost"
+					],
+					"port": "7071",
+					"path": [
+						"api",
+						"task",
+						":taskid"
+					],
+					"variable": [
+						{
+							"key": "taskid",
+							"value": "ec9850a4-e2bb-4d21-ab70-c45efdd4691d"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get Image",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:7071/api/image/:id",
+					"host": [
+						"localhost"
+					],
+					"port": "7071",
+					"path": [
+						"api",
+						"image",
+						":id"
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": "ec9850a4-e2bb-4d21-ab70-c45efdd4691d"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
